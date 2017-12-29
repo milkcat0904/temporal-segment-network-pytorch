@@ -64,11 +64,17 @@ parser.add_argument("--flow_type", type=str, default='warped_tvl1', choices=['tv
 
 * hmdb51
 	* rgb模型
+		
 		$ python main.py hmdb51 RGB <hmdb51_rgb_train_list> <hmdb51_rgb_val_list> 
+		
 		--arch BNInception --num_segments 3 
+		
 		--gd 20 --lr 0.001 --lr_steps 30 60 --epochs 80 
+		
 		-b 128 -j 8 --dropout 0.8 
+		
 		--snapshot_pref ucf101_bninception_ 
+		
 		--gpus 0 1
 		
 	* flow模型
