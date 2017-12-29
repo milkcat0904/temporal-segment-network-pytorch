@@ -1,4 +1,4 @@
-# temporal-segment-network-pytorch
+# Temporal Segment Networks
 tsn model for action recognition on pytorch
 
 1.编译环境 Build
@@ -12,7 +12,9 @@ tsn model for action recognition on pytorch
 
 2.下载数据集 Download dataset
 =
-
+实验数据集采用UCF-101，HMDB51
+* [ucf101][UCF101]
+* [hmdb51][HMDB51]
 
 3.提取光流 Etract optical flow
 =
@@ -23,6 +25,8 @@ tsn model for action recognition on pytorch
 	OUT_PATH ：生成光流图的地址
 	
 	NUMBER_OF_WORKER ：工作的显卡数量，一般设置为2
+
+一个频频的光流图和frame和放在同一个文件夹下
 	
 4.提取warped光流图 Etract warped flow
 =
@@ -34,3 +38,39 @@ parser.add_argument("--flow_type", type=str, default='warped_tvl1', choices=['tv
 ```
 
 * $ bash scripts/extract_optical_flow.sh DATASET_PATH OUT_PATH NUMBER_OF_WORKER
+
+5.生成标签 Label
+=
+* ucf101数据集标签：
+
+		$ bash scripts/build_file_list.sh ucf101 FRAME_PATH
+
+* hmdb51数据集标签：
+
+		$ bash scripts/build_file_list.sh hmdb51 FRAME_PATH
+	
+	FRAME_PATH：光流图（frame）的位置
+	
+6.训练 Training
+=
+* ucf101
+	* rgb模型
+	
+	* flow模型
+	
+	* rgb-diff模型
+	
+	* warped flow模型
+
+* hmdb51
+	* rgb模型
+	
+	* flow模型
+	
+	* rgb-diff模型
+	
+	* warped flow模型
+
+[ucf101]:http://crcv.ucf.edu/data/UCF101.php
+[hmdb51]:http://serre-lab.clps.brown.edu/resource/hmdb-a-large-human-motion-database/
+
