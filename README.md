@@ -20,11 +20,11 @@ tsn model for action recognition on pytorch
 =
 	$ bash scripts/extract_optical_flow.sh DATASET_PATH OUT_PATH NUMBER_OF_WORKER
 	
-	DATASET_PATH : 数据集的地址
+		DATASET_PATH : 数据集的地址
 	
-	OUT_PATH ：生成光流图的地址
+		OUT_PATH ：生成光流图的地址
 	
-	NUMBER_OF_WORKER ：工作的显卡数量，一般设置为2
+		NUMBER_OF_WORKER ：工作的显卡数量，一般设置为2
 
 一个频频的光流图和frame和放在同一个文件夹下
 	
@@ -51,7 +51,7 @@ parser.add_argument("--flow_type", type=str, default='warped_tvl1', choices=['tv
 	
 	FRAME_PATH：光流图（frame）的位置
 	
-6.训练 Training
+6.训练(Inception-BN) Training
 =
 * ucf101
 	* rgb模型
@@ -64,7 +64,13 @@ parser.add_argument("--flow_type", type=str, default='warped_tvl1', choices=['tv
 
 * hmdb51
 	* rgb模型
-	
+		$ python main.py hmdb51 RGB <hmdb51_rgb_train_list> <hmdb51_rgb_val_list> 
+		--arch BNInception --num_segments 3 
+		--gd 20 --lr 0.001 --lr_steps 30 60 --epochs 80 
+		-b 128 -j 8 --dropout 0.8 
+		--snapshot_pref ucf101_bninception_ 
+		--gpus 0 1
+		
 	* flow模型
 	
 	* rgb-diff模型
