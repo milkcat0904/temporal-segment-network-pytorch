@@ -16,7 +16,7 @@ tsn model for action recognition on pytorch
 * [ucf101][UCF101]
 * [hmdb51][HMDB51]
 
-3.提取光流 Etract optical flow
+3.提取光流 Extract optical flow
 =
 	$ bash scripts/extract_optical_flow.sh DATASET_PATH OUT_PATH NUMBER_OF_WORKER
 	
